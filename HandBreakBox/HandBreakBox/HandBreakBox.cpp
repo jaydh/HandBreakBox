@@ -6,33 +6,27 @@
 #include<string>
 #include<Windows.h>
 #include<shellapi.h>
+#include<Boost/filesystem.hpp>
+#include<Boost/optional.hpp>
+#include<queue>
+#include<unordered_set>
+#include<string>
 
-using namespace std;
 
-bool find_file(const path & dir_path,         // in this directory,
-	const std::string & file_name, // search for this name,
-	path & path_found)            // placing path here if found
-{
-	if (!exists(dir_path)) return false;
-	directory_iterator end_itr; // default construction yields past-the-end
-	for (directory_iterator itr(dir_path);
-		itr != end_itr;
-		++itr)
-	{
-		if (is_directory(itr->status()))
-		{
-			if (find_file(itr->path(), file_name, path_found)) return true;
-		}
-		else if (itr->leaf() == file_name) // see below
-		{
-			path_found = itr->path();
-			return true;
+const static std::unordered_set<std::string> videoFileExtensions {".mkv", ".mp4" };
+
+using namespace boost::filesystem;
+void getFileList(const path& dirPath, std::queue<path> & videoFiles) {
+	recursive_directory_iterator dir(dirPath), end;
+	for (; dir != end; dir++) {
+		if (videoFileExtensions.count(dir->path.exention())) {
+			videoFiles.push(dir->path);
 		}
 	}
-	return false;
+	
 }
 
-
+using namespace std;
 void callHandBrakeCLI(string inFile, string outFile = "%HOMEPATH%\\Videos", string flags = "--preset = \"Normal\"") {
 
 	//Generates the encode flags to be used by ShellExecute
@@ -53,29 +47,7 @@ void callHandBrakeCLI(string inFile, string outFile = "%HOMEPATH%\\Videos", stri
 	ShellExecuteEx(&ShExecInfo);
 	WaitForSingleObject(ShExecInfo.hProcess, INFINITE);
 }
-bool find_file(const path & dir_path,         // in this directory,
-	const std::string & file_name, // search for this name,
-	path & path_found)            // placing path here if found
-{
-	if (!exists(dir_path)) return false;
-	directory_iterator end_itr; // default construction yields past-the-end
-	for (directory_iterator itr(dir_path);
-		itr != end_itr;
-		++itr)
-	{
-		if (is_directory(itr->status()))
-		{
-			if (find_file(itr->path(), file_name, path_found)) return true;
-		}
-		else if (itr->leaf() == file_name) // see below
-		{
-			path_found = itr->path();
-			return true;
-		}
-	}
-	return false;
-}
 
 int main() {
-
+	queue<path> filesToConvert;
 }
