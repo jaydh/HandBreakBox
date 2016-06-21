@@ -7,7 +7,6 @@
 #include<Windows.h>
 #include<shellapi.h>
 #include<Boost/filesystem.hpp>
-#include<Boost/optional.hpp>
 #include<queue>
 #include<unordered_set>
 #include<string>
