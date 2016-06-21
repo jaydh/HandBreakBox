@@ -30,12 +30,18 @@
     <ClInclude Include="HandBreakBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="VideoFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="HandBreakBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VideoFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
