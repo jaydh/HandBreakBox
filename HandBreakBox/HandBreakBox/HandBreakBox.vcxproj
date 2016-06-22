@@ -103,12 +103,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Boost;C:\Users\jayho\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Boost;C:\Users\jay\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Boost\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\jay\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox;C:\Boost\stage\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

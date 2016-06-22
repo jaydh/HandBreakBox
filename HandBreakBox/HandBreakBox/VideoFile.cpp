@@ -44,12 +44,13 @@ private:
 		ShExecInfo.fMask = SEE_MASK_NOCLOSEPROCESS;
 		ShExecInfo.hwnd = NULL;
 		ShExecInfo.lpVerb = NULL;
-		ShExecInfo.lpFile = TEXT("C:\\Users\\jayho\\OneDrive\\Documents\\HandBrakeCLI\\HandBrakeCLI.exe";)
+		ShExecInfo.lpFile = TEXT("C:\\Users\\jay\\Desktop\\HandBrakeCLI.exe";)
 		ShExecInfo.lpParameters = flag;
 		ShExecInfo.lpDirectory = NULL;
 		ShExecInfo.nShow = SW_SHOW;
 		ShExecInfo.hInstApp = NULL;
 		ShellExecuteEx(&ShExecInfo);
 		WaitForSingleObject(ShExecInfo.hProcess, INFINITE);
+		
 	}
 };

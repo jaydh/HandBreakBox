@@ -8,7 +8,7 @@ using namespace boost::filesystem;
 class VideoFile {
 
 public:
-	VideoFile(path, path = path("%HOMEPATH%\\Videos"), string flags = "--preset = \"Normal\"");
+	VideoFile(path, path, string flags = "--preset = \"Normal\"");
 	path getInPath() const;
 	path getOutPath() const;
 	bool isProcessed();
