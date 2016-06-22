@@ -8,25 +8,33 @@
 #include<queue>
 #include<unordered_set>
 #include<string>
+#include<VideoFile.h>
+
 using namespace std;
 using namespace boost::filesystem;
 
 const static std::unordered_set<std::string> videoFileExtensions {".mkv", ".mp4" };
 
-//change to vidoefile
 
-queue<path> & getFileList(const path& dirPath, queue<path> & videoFiles) {
+queue<path> getFileList(const path& dirPath) {
+	queue<path> myQueue;
+
 	recursive_directory_iterator dir(dirPath), end;
 	for (; dir != end; dir++) {
-		if (videoFileExtensions.count(dir->path.exention())) {
-			videoFiles.push(dir->path);
-		}
+		path currentPath = *dir;
+		path currentFileExtension = currentPath.extension();
+		
+		//Only adds video files to queue
+		if (videoFileExtensions.count(currentFileExtension.string())) {myQueue.push(currentPath);}
 	}
-	return;
+	return myQueue;
 }
 
 
 
 int main() {
-	queue<path> filesToConvert;
+	queue<path> filesToConvert = getFileList(path("C:\\Users\\jay\\Videos"));
+	path temp = filesToConvert.pop;
+	VideoFile test(temp, path("C:\\Users\\jay\\Videos\\test"));
+	test.process();
 }

@@ -11,27 +11,31 @@ using namespace boost::filesystem;
 class VideoFile {
 
 public:
-	VideoFile(path other) :inPath{ other } {
-		
+	VideoFile(path otherIn, path otherOut, string flags) :inPath(otherIn), outPath(otherOut), flags(flags) {
+		//if (otherIn == nullptr) { throw invalid_argument; }
 		processedStatus = false;
 	}
+
 	path getInPath() const { return inPath; }
 	path getOutPath() const { return outPath; }
 	bool isProcessed() { return processedStatus; }
 	
-	void process() { 
+	void process() {
+		callHandBrakeCLI(inPath, outPath, flags);
 		processedStatus = true; 
 	}
 	
 private:
 	path inPath;
 	path outPath;
+	string flags;
 	bool processedStatus;
 
-	void callHandBrakeCLI(string inFile, string outFile = "%HOMEPATH%\\Videos", string flags = "--preset = \"Normal\"") {
+	//Uses ShellEecuteEx to call HandbrakeCLI with relevant flags
+	void callHandBrakeCLI(path inFile, path outFile, string flags) {
 		
 		//Generates the encode flags to be used by ShellExecute
-		const string formattedFlags = "-i " + inFile + "-o " + outFile + " " + flags;
+		const string formattedFlags = "-i " + inFile.string() + "-o " + outFile.string() + " " + flags;
 		std::wstring stemp = std::wstring(formattedFlags.begin(), formattedFlags.end());
 		LPCWSTR flag = stemp.c_str();
 
