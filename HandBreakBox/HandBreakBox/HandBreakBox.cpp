@@ -8,7 +8,7 @@
 #include<queue>
 #include<unordered_set>
 #include<string>
-#include<VideoFile.h>
+//#include<VideoFile.h>
 
 using namespace std;
 using namespace boost::filesystem;
@@ -16,11 +16,12 @@ using namespace boost::filesystem;
 const static std::unordered_set<std::string> videoFileExtensions {".mkv", ".mp4" };
 
 
-queue<path> getFileList(const path& dirPath) {
+queue<path> getFileList(const path &dirPath) {
 	queue<path> myQueue;
 
-	recursive_directory_iterator dir(dirPath), end;
-	for (; dir != end; dir++) {
+	recursive_directory_iterator dir(dirPath);
+	recursive_directory_iterator end;
+	for (; dir != end; ++dir) {
 		path currentPath = *dir;
 		path currentFileExtension = currentPath.extension();
 		
@@ -33,8 +34,10 @@ queue<path> getFileList(const path& dirPath) {
 
 
 int main() {
-	queue<path> filesToConvert = getFileList(path("C:\\Users\\jay\\Videos"));
-	path temp = filesToConvert.pop;
-	VideoFile test(temp, path("C:\\Users\\jay\\Videos\\test"));
-	test.process();
+	path syncFolderPath = path("C:\\Users\\jay\\Videos");
+	queue<path> filesToConvert = getFileList(syncFolderPath);
+	//path temp = filesToConvert.front();
+	//filesToConvert.pop();
+	//VideoFile test(temp, path("C:\\Users\\jay\\Videos\\test"));
+	//test.process();
 }
