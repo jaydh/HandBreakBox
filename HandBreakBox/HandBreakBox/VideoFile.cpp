@@ -3,6 +3,7 @@
 #include<shellapi.h>
 #include<string>
 #include<VideoFile.h>
+#include<iostream>
 using namespace std;
 using namespace boost::filesystem;
 
@@ -25,21 +26,19 @@ void VideoFile::process() {
 void VideoFile::callHandBrakeCLI(path inFile, path outFile, string flags) {
 		
 		//Generates the encode flags to be used by ShellExecute
-		const string formattedFlags = "-i " + inFile.string() + "-o " + outFile.string() + " " + flags;
+		string formattedFlags = " C/ C:\\Users\\jay\\Desktop\\HandBrakeCLI.exe -i " + inFile.string() + "-o " + outFile.string() + " " + flags;
 		std::wstring stemp = std::wstring(formattedFlags.begin(), formattedFlags.end());
+		cout << stemp << endl;
 		LPCWSTR flag = stemp.c_str();
+		cout << flag << endl;
 
-		SHELLEXECUTEINFO ShExecInfo = { 0 };
-		ShExecInfo.cbSize = sizeof(SHELLEXECUTEINFO);
-		ShExecInfo.fMask = SEE_MASK_NOCLOSEPROCESS;
-		ShExecInfo.hwnd = NULL;
-		ShExecInfo.lpVerb = NULL;
-		ShExecInfo.lpFile = TEXT("C:\\Users\\jay\\Desktop\\HandBrakeCLI.exe";)
-		ShExecInfo.lpParameters = flag;
-		ShExecInfo.lpDirectory = NULL;
-		ShExecInfo.nShow = SW_SHOW;
-		ShExecInfo.hInstApp = NULL;
-		ShellExecuteEx(&ShExecInfo);
-		WaitForSingleObject(ShExecInfo.hProcess, INFINITE);
+		ShellExecute(
+			NULL
+			, TEXT("open")
+			, TEXT("cmd")
+			, flag
+			, NULL
+			,
+			SW_SHOW);
 		
 	}

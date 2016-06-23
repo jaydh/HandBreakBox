@@ -10,6 +10,7 @@
 #include<string>
 #include<VideoFile.h>
 #include<shellapi.h>
+#include<iostream>
 
 using namespace std;
 using namespace boost::filesystem;
@@ -37,7 +38,10 @@ int main() {
 	queue<path> filesToConvert = getFileList(syncFolderPath);
 	path tempIn = filesToConvert.front();
 	path tempOut("C:\\Users\\jay\\Videos\\test");
+	cout << tempIn.string() << endl;
+	cin.get();
 	filesToConvert.pop();
-	VideoFile test(tempIn, tempOut, "--preset = \"Normal\"");
-	//test.process();
+	VideoFile test(tempIn, tempOut, ""/*"--preset = \"Normal\""*/);
+	test.process();
+	cin.get();
 }
