@@ -9,4 +9,7 @@ using namespace boost::filesystem;
 
 queue<path> getFileList(const path &dirPath);
 
+void processFiles(queue<path> videoFiles);
+
+
 int main();

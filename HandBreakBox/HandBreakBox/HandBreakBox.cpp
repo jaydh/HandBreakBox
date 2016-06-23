@@ -15,6 +15,7 @@
 using namespace std;
 using namespace boost::filesystem;
 
+
 queue<path> getFileList(const path &dirPath) {
 	const static std::unordered_set<std::string> videoFileExtensions{ ".mkv", ".mp4" };
 	queue<path> myQueue;
@@ -31,9 +32,23 @@ queue<path> getFileList(const path &dirPath) {
 	return myQueue;
 }
 
-
+void processFiles(queue<path> videoFiles) {
+	while (!videoFiles.empty()) {
+		path tempIn = videoFiles.front();
+		string newFileName = "Converted " + tempIn.filename().string();
+		path tempOut(tempIn.parent_path());
+		tempOut /= path(newFileName);
+		cout << tempIn << endl;
+		cout << tempOut << endl;
+		VideoFile test(tempIn, tempOut, "--preset = \"Normal\"");
+		test.process();
+		videoFiles.pop();
+	}
+}
 
 int main() {
 	path syncFolderPath = path("C:\\Users\\jay\\Videos");
 	queue<path> filesToConvert = getFileList(syncFolderPath);
+	processFiles(filesToConvert);
+	cin.get();
 }
