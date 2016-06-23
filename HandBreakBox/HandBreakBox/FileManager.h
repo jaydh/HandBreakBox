@@ -15,7 +15,7 @@ public:
 
 	void getFileList();
 	//Use aux queue to print entries. Might implement queue from vector later to avoid print limitation
-	void printFileList();
+	void printFileList(ostream& o);
 
 	void processFiles(string flags = "--preset = \"High Profile\"");
 	

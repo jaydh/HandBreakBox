@@ -24,7 +24,7 @@ void VideoFile::process() {
 	processedStatus = true; 
 }
 
-//Uses ShellEecuteEx to call HandbrakeCLI with relevant flags
+//I know system calls are evil, will move to ShellExecute/CreateProcess when I figure out how to make it work with HandBrakeCLI
 void VideoFile::callHandBrakeCLI() {
 		
 		//Generates the encode flags to be used by ShellExecute
