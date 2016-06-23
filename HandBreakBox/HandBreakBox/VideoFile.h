@@ -8,7 +8,8 @@ using namespace boost::filesystem;
 class VideoFile {
 
 public:
-	VideoFile(path, path, string flags = "--preset = \"Normal\"");
+	VideoFile(path otherIn, path otherOut, string flags = "--preset = \"Normal\"");
+
 	path getInPath() const;
 	path getOutPath() const;
 	bool isProcessed();
@@ -16,9 +17,10 @@ public:
 	void process();
 
 private:
+	void callHandBrakeCLI(path, path, string);
+
 	path inPath;
 	path outPath;
+	string flags;
 	bool processedStatus;
-
-	void callHandBrakeCLI(path, path, string);
 };

@@ -4,16 +4,15 @@
 #include "stdafx.h"
 #include "HandBreakBox.h"
 #include<string>
-#include<Boost/filesystem.hpp>
+#include<boost/filesystem.hpp>
 #include<queue>
 #include<unordered_set>
 #include<string>
 #include<VideoFile.h>
+#include<shellapi.h>
 
 using namespace std;
 using namespace boost::filesystem;
-
-
 
 queue<path> getFileList(const path &dirPath) {
 	const static std::unordered_set<std::string> videoFileExtensions{ ".mkv", ".mp4" };
@@ -36,8 +35,9 @@ queue<path> getFileList(const path &dirPath) {
 int main() {
 	path syncFolderPath = path("C:\\Users\\jay\\Videos");
 	queue<path> filesToConvert = getFileList(syncFolderPath);
-	path temp = filesToConvert.front();
+	path tempIn = filesToConvert.front();
+	path tempOut("C:\\Users\\jay\\Videos\\test");
 	filesToConvert.pop();
-	VideoFile test(temp, path("C:\\Users\\jay\\Videos\\test"));
+	VideoFile test(tempIn, tempOut, "--preset = \"Normal\"");
 	//test.process();
 }
