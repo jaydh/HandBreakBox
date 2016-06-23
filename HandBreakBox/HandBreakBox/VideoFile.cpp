@@ -26,19 +26,11 @@ void VideoFile::process() {
 void VideoFile::callHandBrakeCLI(path inFile, path outFile, string flags) {
 		
 		//Generates the encode flags to be used by ShellExecute
-		string formattedFlags = " C/ C:\\Users\\jay\\Desktop\\HandBrakeCLI.exe -i " + inFile.string() + "-o " + outFile.string() + " " + flags;
-		std::wstring stemp = std::wstring(formattedFlags.begin(), formattedFlags.end());
-		cout << stemp << endl;
-		LPCWSTR flag = stemp.c_str();
-		cout << flag << endl;
+		string Flags = "C:\\Users\\jay\\Desktop\\HandBrakeCLI.exe -i \"" + inFile.string() + "\" -o \"" + outFile.string() + "\" " + flags;
+		const char* formattedFlags = Flags.c_str();
+		
+		cout << formattedFlags << endl;
 
-		ShellExecute(
-			NULL
-			, TEXT("open")
-			, TEXT("cmd")
-			, flag
-			, NULL
-			,
-			SW_SHOW);
+		system(formattedFlags);
 		
 	}

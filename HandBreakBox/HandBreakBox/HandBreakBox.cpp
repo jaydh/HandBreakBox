@@ -36,12 +36,4 @@ queue<path> getFileList(const path &dirPath) {
 int main() {
 	path syncFolderPath = path("C:\\Users\\jay\\Videos");
 	queue<path> filesToConvert = getFileList(syncFolderPath);
-	path tempIn = filesToConvert.front();
-	path tempOut("C:\\Users\\jay\\Videos\\test");
-	cout << tempIn.string() << endl;
-	cin.get();
-	filesToConvert.pop();
-	VideoFile test(tempIn, tempOut, ""/*"--preset = \"Normal\""*/);
-	test.process();
-	cin.get();
 }
