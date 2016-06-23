@@ -88,12 +88,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\jayho\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox;C:\local\boost_1_61_0\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Boost;C:\Users\jayho\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox;C:\Users\jayho\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox;C:\local\boost_1_61_0\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\local\boost_1_61_0\lib64-msvc-14.0</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Boost\lib64-msvc-14.0;C:\local\boost_1_61_0\lib64-msvc-14.0</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -103,12 +103,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Boost;C:\Users\jay\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Boost;C:\Users\jayho\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox;C:\Boost;C:\Users\jay\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Boost\stage\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Boost\lib64-msvc-14.0;C:\Boost\stage\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -120,14 +120,14 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\jayho\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox;C:\local\boost_1_61_0\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Boost;C:\Users\jayho\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox;C:\Users\jayho\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox;C:\local\boost_1_61_0\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\local\boost_1_61_0\lib64-msvc-14.0</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Boost\lib64-msvc-14.0;C:\local\boost_1_61_0\lib64-msvc-14.0</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,20 +139,21 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\jayho\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox;C:\local\boost_1_61_0\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Boost;C:\Users\jayho\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox;C:\Users\jayho\Source\Repos\HandBreakBox\HandBreakBox\HandBreakBox;C:\local\boost_1_61_0\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\local\boost_1_61_0\lib64-msvc-14.0</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Boost\lib64-msvc-14.0;C:\local\boost_1_61_0\lib64-msvc-14.0</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FileManager.h" />
     <ClInclude Include="HandBreakBox.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="VideoFile.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="HandBreakBox.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
