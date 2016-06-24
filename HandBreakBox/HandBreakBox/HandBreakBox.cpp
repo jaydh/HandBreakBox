@@ -8,8 +8,8 @@ using namespace boost::filesystem;
 
 
 int main() {
-	path syncFolderPath = path("C:\\vidTest");
-	path outputFolderPath = path("C:\\vidTestOut");
+	path syncFolderPath = path("E:\\Videos\\Anime\\Re Zero");
+	path outputFolderPath = path("E:\\Videos\\Anime\\Re Zero\\Test");
 	FileManager fm(syncFolderPath, outputFolderPath);
 
 	fm.getFileList();
