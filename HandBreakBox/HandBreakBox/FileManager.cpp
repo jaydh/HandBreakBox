@@ -42,6 +42,9 @@ void FileManager::printFileList(ostream& o) {
 
 void FileManager::processFiles(string flags) {
 	while (!toConvert.empty()) {
+
+		//if timeOut break
+
 		VideoFile temp = toConvert.front();
 		
 		//Creates subdirectories if they're not present
