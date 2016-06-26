@@ -6,14 +6,19 @@
 using namespace std;
 using namespace boost::filesystem;
 
-
 int main() {
-	path syncFolderPath = path("E:\\Videos\\Anime\\Re Zero");
-	path outputFolderPath = path("E:\\Videos\\Anime\\Re Zero\\Test");
-	FileManager fm(syncFolderPath, outputFolderPath);
 
-	fm.getFileList();
-	fm.printFileList(cout);
-	fm.processFiles();
+	/*HWND window;
+	AllocConsole();
+	window = FindWindowA("ConsoleWindowClass", NULL);
+	ShowWindow(window, 0);
+	*/
+
+	path syncFolderPath = path("C:\\vidTest");
+	path outputFolderPath = path("C:\\vidTestOut");
+	boost::asio::io_service io;
+	ScheduleManager sm(syncFolderPath, outputFolderPath, io);
+	io.run();
+	
 	cin.get();
 }
