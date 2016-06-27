@@ -12,7 +12,7 @@ using namespace boost::chrono;
 
 class ScheduleManager {
 public:
-	ScheduleManager(path in, path out, boost::asio::io_service & io, long interval = 10);
+	ScheduleManager(boost::asio::io_service & io, FileManager & fm, long interval = 10);
 	void updateFileManager();
 	void manageUpdates(const boost::system::error_code &);
 	void addAvailableTime();

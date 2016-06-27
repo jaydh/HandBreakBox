@@ -13,11 +13,18 @@ int main() {
 	window = FindWindowA("ConsoleWindowClass", NULL);
 	ShowWindow(window, 0);
 	*/
+	string inputFolder;
+	string outputFolder;
+	cout << "Enter input folder path:";
+	getline(cin, inputFolder);
+	cout << endl << "Enter output folder path:";
+	getline(cin, outputFolder);
 
-	path syncFolderPath = path("C:\\vidTest");
-	path outputFolderPath = path("C:\\vidTestOut");
+	path syncFolderPath = path(inputFolder);
+	path outputFolderPath = path(outputFolder);
 	boost::asio::io_service io;
-	ScheduleManager sm(syncFolderPath, outputFolderPath, io);
+	FileManager fm(syncFolderPath, outputFolderPath);
+	ScheduleManager sm(io, fm);
 	io.run();
 	
 	cin.get();

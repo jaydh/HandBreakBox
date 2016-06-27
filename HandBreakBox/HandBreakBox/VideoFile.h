@@ -8,7 +8,7 @@ using namespace boost::filesystem;
 class VideoFile {
 
 public:
-	VideoFile(path otherIn, path otherOut, string flags = "");
+	VideoFile(path otherIn, path otherOut, path HandBrakeLocation = "C:\\HandBrakeCLI.exe -i \"", string flags ="");
 
 	void setInPath(path const& otherIn);
 	void setOutPath(path const& otherOut);
@@ -24,6 +24,7 @@ private:
 
 	path inPath;
 	path outPath;
+	path HandBrakeLocation;
 	string flags;
 	bool processedStatus;
 };

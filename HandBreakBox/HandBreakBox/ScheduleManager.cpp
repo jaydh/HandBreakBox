@@ -1,9 +1,10 @@
 #include<ScheduleManager.h>
 
-ScheduleManager::ScheduleManager(path in, path out, boost::asio::io_service& io, long interval) : fm(in, out), t(io, boost::posix_time::seconds(interval)), syncInterval(interval) {
+ScheduleManager::ScheduleManager(boost::asio::io_service& io, FileManager& fm, long interval) : fm(fm), t(io, boost::posix_time::seconds(interval)), syncInterval(interval) {
 	fm.updateFileList();
 	fm.printFileList(cout);
 	t.async_wait(boost::bind(&ScheduleManager::updateFileManager, this));
+	fm.processFiles();
 }
 
 void ScheduleManager::updateFileManager(){

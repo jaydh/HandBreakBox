@@ -33,7 +33,6 @@ void FileManager::updateFileList() {
 
 void FileManager::printFileList(ostream& o) {
 	queue<VideoFile> aux(videosToConvert);
-	o << "run once" << endl;
 	while (!aux.empty()) {
 		o << aux.front().getInPath() << endl;
 		aux.pop();

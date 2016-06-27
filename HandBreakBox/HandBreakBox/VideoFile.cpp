@@ -8,7 +8,7 @@ using namespace std;
 using namespace boost::filesystem;
 
 
-VideoFile::VideoFile(path otherIn, path otherOut, string flags) :inPath(otherIn), outPath(otherOut), flags(flags) {
+VideoFile::VideoFile(path otherIn, path otherOut, path HandBrakeLocation, string flags) :inPath(otherIn), outPath(otherOut), HandBrakeLocation(HandBrakeLocation), flags(flags) {
 	//if (otherIn == nullptr) { throw invalid_argument; }
 	processedStatus = false;
 }
@@ -28,7 +28,7 @@ void VideoFile::process() {
 void VideoFile::callHandBrakeCLI() {
 		
 		//Generates the encode flags to be used by ShellExecute
-		string Flags = "C:\\HandBrakeCLI.exe -i \"" + inPath.string() + "\" -o \"" + outPath.string() + "\" " + flags;
+		string Flags = HandBrakeLocation.string() + inPath.string() + "\" -o \"" + outPath.string() + "\" " + flags;
 		const char* formattedFlags = Flags.c_str();
 		
 		cout << formattedFlags << endl;
