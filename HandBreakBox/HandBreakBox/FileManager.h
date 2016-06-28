@@ -15,13 +15,14 @@ public:
 
 	//Uses recursive directory iterators to push Video Files to videosToConvert Queue.
 	void updateFileList();
-	//Use aux queue to print entries. Might implement queue from vector later to avoid print limitation
-	void printFileList(ostream& o = cout) const;
 
-	void processFiles();
+	void printInputFileList(ostream & o) const;
+	void printOutputFileList(ostream & o) const;
+
+	void processNextFile();
 
 private:
-	queue<VideoFile> videoFileQueue;
+	vector<VideoFile> videoFileQueue;
 	path parentInputFolder;
 	path parentOutputFolder;
 	string flags;

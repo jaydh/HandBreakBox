@@ -10,6 +10,7 @@ using namespace boost::filesystem;
 
 VideoFile::VideoFile(path otherIn, path otherOut, path HandBrakeLocation, string flags) :inPath(otherIn), outPath(otherOut), HandBrakeLocation(HandBrakeLocation), flags(flags) {
 	//if (otherIn == nullptr) { throw invalid_argument; }
+	VideoFileCount += 1;
 	processedStatus = (is_regular_file(outPath)) ? true : false;
 }
 	
