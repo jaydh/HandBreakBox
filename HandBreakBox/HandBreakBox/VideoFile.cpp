@@ -10,18 +10,14 @@ using namespace boost::filesystem;
 
 VideoFile::VideoFile(path otherIn, path otherOut, path HandBrakeLocation, string flags) :inPath(otherIn), outPath(otherOut), HandBrakeLocation(HandBrakeLocation), flags(flags) {
 	//if (otherIn == nullptr) { throw invalid_argument; }
-	processedStatus = false;
+	processedStatus = (is_regular_file(outPath)) ? true : false;
 }
-void VideoFile::setInPath(path const& otherIn) { inPath = otherIn; }
-void VideoFile::setOutPath(path const& otherOut) { outPath = otherOut; }
-void VideoFile::setFlags(string const & otherFlags) { flags = otherFlags; }
-path VideoFile::getInPath() const { return inPath; }
-path VideoFile::getOutPath() const { return outPath; }
-bool VideoFile::isProcessed() { return processedStatus; }
 	
 void VideoFile::process() {
-	callHandBrakeCLI();
-	processedStatus = true; 
+	if (!isProcessed()) {
+		callHandBrakeCLI();
+		processedStatus = true;
+	}
 }
 
 //I know system calls are evil, will move to ShellExecute/CreateProcess when I figure out how to make it work with HandBrakeCLI

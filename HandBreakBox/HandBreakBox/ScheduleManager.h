@@ -14,7 +14,6 @@ class ScheduleManager {
 public:
 	ScheduleManager(boost::asio::io_service & io, FileManager & fm, long interval = 10);
 	void updateFileManager();
-	void manageUpdates(const boost::system::error_code &);
 	void addAvailableTime();
 	void checkForOverlap();
 
