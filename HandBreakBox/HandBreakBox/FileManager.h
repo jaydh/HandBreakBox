@@ -19,16 +19,18 @@ public:
 	void updateFileList();
 
 	void printInputFileList(ostream & o) const;
-	void printOutputFileList(ostream & o) const;
 	int getVideoFileCount() const { return VideoFileCount; }
 	void processNextFile();
 
-	void process(VideoFile in);
-
+	
 private:
-	vector<VideoFile> inputVideoFiles;
+	void process(VideoFile vid);
+
+	vector<VideoFile> VideoFiles;
+	vector<VideoFile> ProcessedFiles;
 	path parentInputFolder;
 	path parentOutputFolder;
+
 	path HandBrakeLocation;
 	int VideoFileCount;
 	string flags;
